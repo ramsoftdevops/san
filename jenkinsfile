@@ -57,10 +57,7 @@ stage('Build Image') {
 stage('Deploy to Kubernetes') {
     steps {
         sh '''#!/bin/bash -l
-aws eks update-kubeconfig \
-  --region us-east-1 \
-  --name cwvj-devsecops-eks \
-  --kubeconfig /home/ubuntu/.kube/config
+
 
 kubectl create ns cwvj-devsecops
 kubectl apply -f deploy-svc.yaml
