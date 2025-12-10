@@ -51,6 +51,9 @@ stage('Build Image') {
     stage('Update Deployment') {
       steps {
         sh 'sed -i "s|image:.*|image: $IMAGE_REPO:$BUILD_NUMBER|g" deploy-svc.yaml'
+        git add .  
+git commit -m "uploaded deployment and svc manifest"  
+git push origin main  
       }
     }
 
