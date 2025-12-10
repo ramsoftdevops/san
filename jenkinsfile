@@ -5,6 +5,7 @@ pipeline {
       }
      environment {
     SONAR_IP = '34.226.203.50'
+    ECR_REGISTRY = '773195032411.dkr.ecr.us-east-1.amazonaws.com'
   }  
     stages {
         stage('Build') {
@@ -30,5 +31,10 @@ pipeline {
       }
     }
 }
+ stage('ECR Login') {
+      steps {
+        sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $ECR_REGISTRY'
+      }
+    }
 }
 }
