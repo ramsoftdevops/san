@@ -5,12 +5,13 @@ pipeline {
             steps {
                 sh 'echo "hello"'
             }
-        stage('trivy fs scan'){
+        }
+        stage('trivyfsscan'){
          steps {
-         sh 'trivy fs --exit-code 1 --severity HIGH,CRITICAL .'
+             sh 'trivy fs --exit-code 1 --severity HIGH,CRITICAL .'
            }
         }
     }
 }
-}
+
 
