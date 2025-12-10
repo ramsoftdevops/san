@@ -60,7 +60,7 @@ stage('Deploy to Kubernetes') {
 aws eks update-kubeconfig \
   --region us-east-1 \
   --name cwvj-devsecops-eks \
-  --kubeconfig /home/jenkins/.kube/config
+  --kubeconfig /home/ubuntu/.kube/config
 
 kubectl create ns cwvj-devsecops
 kubectl apply -f deploy-svc.yaml
