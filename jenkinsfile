@@ -2,7 +2,7 @@ pipeline {
     agent { label 'docker-maven-trivy' }
 
     stages {
-        stage("Build #${env.BUILD_NUMBER}") {
+        stage('Build') {
             steps {
                 sh 'echo "hello"'
             }
