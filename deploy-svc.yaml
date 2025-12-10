@@ -1,0 +1,29 @@
+apiVersion: apps/v1  
+kind: Deployment  
+metadata:  
+  name: cwvj-devsecops-demo  
+  namespace: cwvj-devsecops
+  labels:  
+    app: cwvj-devsecops-demo  
+spec:  
+  replicas: 2  
+  selector:  
+    matchLabels:  
+      app: cwvj-devsecops-demo  
+  template:  
+    metadata:  
+      labels:  
+        app: cwvj-devsecops-demo  
+    spec:  
+      topologySpreadConstraints:  
+        - maxSkew: 1  
+          topologyKey: topology.kubernetes.io/zone  
+          whenUnsatisfiable: DoNotSchedule  
+          labelSelector:  
+            matchLabels:  
+              app: cwvj-devsecops-demo  
+      containers:  
+        - name: cwvj-devsecops-demo  
+          image: 773195032411.dkr.ecr.us-east-1.amazonaws.com/cwvj-devsecops-demo:latest  
+          ports:  
+            - containerPort: 8080  
